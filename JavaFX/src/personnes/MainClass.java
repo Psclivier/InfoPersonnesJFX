@@ -13,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import personnes.model.Personne;
 import personnes.model.Sexe;
+import personnes.view.PersonneMapping;
 
 public class MainClass extends Application {
 
@@ -74,10 +75,14 @@ public class MainClass extends Application {
 			//Qui nous ajoutons à notre conteneur principal
 			//Au centre, puisque'il s'agit d'un BorderPane
 			conteneurPrincipal.setCenter(conteneurPersonne);
+			PersonneMapping controleur = loader.getController();
+			controleur.setMainApp(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	public static void main(String[] args) {
 		launch(args);
