@@ -1,13 +1,18 @@
 package personnes;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import personnes.model.Personne;
+import personnes.model.Sexe;
 
 public class MainClass extends Application {
 
@@ -17,6 +22,16 @@ public class MainClass extends Application {
 	//est un BorderPane, nous reparlerons de l'objet Stage
 	private Stage stagePrincipal;
 	private BorderPane conteneurPrincipal;
+	
+	private ObservableList<Personne> listDePersonne = FXCollections.observableArrayList();
+	
+	public MainClass() {
+		listDePersonne.add(new Personne("Proviste", "Alain", LocalDate.of(1970, 1, 1), Sexe.MASCULIN));
+		listDePersonne.add(new Personne("D'Arc", "Jeanne", LocalDate.of(1431, 5, 30), Sexe.FEMININ));
+		listDePersonne.add(new Personne("Caisse", "Jean", LocalDate.of(1950, 3, 3), Sexe.MASCULIN));
+	}
+		
+	public ObservableList<Personne> getListDePersonne(){return listDePersonne;}
 	
 	@Override
 	public void start(Stage primaryStage) {
